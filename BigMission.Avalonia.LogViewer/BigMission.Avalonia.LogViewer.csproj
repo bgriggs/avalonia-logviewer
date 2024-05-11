@@ -5,14 +5,28 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<Title>Log Viewer Control</Title>
-		<Version>1.0.1.0</Version>
+		<Version>1.0.2.0</Version>
 		<Authors>Brian Griggs</Authors>
 		<Company>Big Mission Motorsports, LLC</Company>
 		<Description>Shared Avalonia Log Viewer Control</Description>
 		<Copyright>2024</Copyright>
 		<RepositoryType>git</RepositoryType>
 		<IncludeSymbols>True</IncludeSymbols>
+		<RepositoryUrl>https://github.com/bgriggs/avalonia-logviewer</RepositoryUrl>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<PackageLicenseFile>LICENSE</PackageLicenseFile>
 	</PropertyGroup>
+
+	<ItemGroup>
+	  <None Include="..\LICENSE">
+	    <Pack>True</Pack>
+	    <PackagePath>\</PackagePath>
+	  </None>
+	  <None Include="..\README.md">
+	    <Pack>True</Pack>
+	    <PackagePath>\</PackagePath>
+	  </None>
+	</ItemGroup>
 
 	<ItemGroup>
 		<PackageReference Include="Avalonia" Version="11.0.10" />
