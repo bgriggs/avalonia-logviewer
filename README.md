@@ -31,5 +31,5 @@ xmlns:lc="clr-namespace:BigMission.Avalonia.LogViewer;assembly=BigMission.Avalon
 ```
 Add the control with data binding:
 ``` xml
-<lc:LogViewerControl DataContext="{Binding LogViewer}" Grid.Row="2" Margin="-12,0,-12,0"/>
+<lc:LogViewerControl DataContext="{Binding LogViewer}"/>
 ```
