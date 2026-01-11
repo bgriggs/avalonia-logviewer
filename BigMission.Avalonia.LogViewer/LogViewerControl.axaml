@@ -1,14 +1,14 @@
 <UserControl xmlns="https://github.com/avaloniaui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+			 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+			 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 			 xmlns:converters="clr-namespace:LogViewer.Avalonia.Converters"
 			 xmlns:vm="clr-namespace:LogViewer.Core.ViewModels"
 			 xmlns:m="clr-namespace:LogViewer.Core"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="BigMission.Avalonia.LogViewer.LogViewerControl"
+			 mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+			 x:Class="BigMission.Avalonia.LogViewer.LogViewerControl"
 			 DataContextChanged="OnDataContextChanged"
-             DetachedFromLogicalTree="OnDetachedFromLogicalTree"
+			 DetachedFromLogicalTree="OnDetachedFromLogicalTree"
 			 x:DataType="vm:LogViewerControlViewModel">
 	<Grid>
 		<Grid.RowDefinitions>
@@ -25,9 +25,9 @@
 			<Style Selector="DataGridRow" x:DataType="m:LogModel">
 				<Setter Property="Padding" Value="0" />
 				<Setter Property="Foreground" Value="{Binding Color.Foreground,
-                        Converter={StaticResource ColorConverter}, ConverterParameter={StaticResource ColorBlack}}" />
+				Converter={StaticResource ColorConverter}, ConverterParameter={StaticResource ColorBlack}}" />
 				<Setter Property="Background" Value="{Binding Color.Background,
-                        Converter={StaticResource ColorConverter}, ConverterParameter={StaticResource ColorTransparent}}" />
+				Converter={StaticResource ColorConverter}, ConverterParameter={StaticResource ColorTransparent}}" />
 			</Style>
 			<Style Selector="DataGridCell.size">
 				<Setter Property="FontSize" Value="11" />
@@ -35,9 +35,10 @@
 			</Style>
 		</Grid.Styles>
 		<DataGrid x:Name="MyDataGrid" Margin="12,2,12,1"
-                  ItemsSource="{Binding DataStore.Entries}" AutoGenerateColumns="False"
-                  CanUserSortColumns="False" CanUserResizeColumns="True"
-                  LayoutUpdated="OnLayoutUpdated">
+				  ItemsSource="{Binding DataStore.Entries}" AutoGenerateColumns="False"
+				  CanUserSortColumns="False" CanUserResizeColumns="True"
+				  LayoutUpdated="OnLayoutUpdated"
+				  DoubleTapped="OnDataGridDoubleTapped">
 			<DataGrid.Columns>
 				<DataGridTextColumn CellStyleClasses="size" Header="Time" Width="150"  Binding="{Binding Timestamp}"/>
 				<DataGridTextColumn CellStyleClasses="size" Header="Level" Width="90" Binding="{Binding LogLevel}" />
@@ -47,8 +48,23 @@
 			</DataGrid.Columns>
 		</DataGrid>
 
-		<CheckBox x:Name="CanAutoScroll" FontSize="11" Content="Auto Scroll log"
-                  IsChecked="True" Grid.Row="1" Margin="20 10" />
+		<!-- Clipboard success notification overlay -->
+		<Border x:Name="ClipboardNotification"
+				Grid.Row="0"
+				Background="#CC000000"
+				IsVisible="False"
+				HorizontalAlignment="Center"
+				VerticalAlignment="Center"
+				CornerRadius="8"
+				Padding="20,10">
+			<TextBlock Text="Copied to clipboard successfully!"
+					   Foreground="White"
+					   FontSize="14"
+					   FontWeight="SemiBold" />
+		</Border>
+
+		<CheckBox x:Name="CanAutoScroll" FontSize="11" Content="Auto Scroll Log"
+				  IsChecked="True" Grid.Row="1" Margin="12,5" />
 
 	</Grid>
 </UserControl>
