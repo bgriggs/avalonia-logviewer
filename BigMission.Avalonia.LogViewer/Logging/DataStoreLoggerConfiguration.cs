@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using Avalonia.Threading;
+using System.Drawing;
 using Microsoft.Extensions.Logging;
 
 namespace LogViewer.Core;
@@ -6,6 +7,10 @@ namespace LogViewer.Core;
 public class DataStoreLoggerConfiguration
 {
     public EventId EventId { get; set; }
+
+    public int? MaxLogEntries { get; set; }
+
+    public DispatcherPriority DispatcherPriority { get; set; } = DispatcherPriority.Background;
 
     public Dictionary<LogLevel, LogEntryColor> Colors { get; } = new()
     {

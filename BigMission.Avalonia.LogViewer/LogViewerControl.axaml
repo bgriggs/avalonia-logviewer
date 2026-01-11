@@ -3,10 +3,13 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 			 xmlns:converters="clr-namespace:LogViewer.Avalonia.Converters"
+			 xmlns:vm="clr-namespace:LogViewer.Core.ViewModels"
+			 xmlns:m="clr-namespace:LogViewer.Core"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="BigMission.Avalonia.LogViewer.LogViewerControl"
 			 DataContextChanged="OnDataContextChanged"
-             DetachedFromLogicalTree="OnDetachedFromLogicalTree">
+             DetachedFromLogicalTree="OnDetachedFromLogicalTree"
+			 x:DataType="vm:LogViewerControlViewModel">
 	<Grid>
 		<Grid.RowDefinitions>
 			<RowDefinition />
@@ -19,7 +22,7 @@
 			<SolidColorBrush x:Key="ColorTransparent">Transparent</SolidColorBrush>
 		</Grid.Resources>
 		<Grid.Styles>
-			<Style Selector="DataGridRow">
+			<Style Selector="DataGridRow" x:DataType="m:LogModel">
 				<Setter Property="Padding" Value="0" />
 				<Setter Property="Foreground" Value="{Binding Color.Foreground,
                         Converter={StaticResource ColorConverter}, ConverterParameter={StaticResource ColorBlack}}" />

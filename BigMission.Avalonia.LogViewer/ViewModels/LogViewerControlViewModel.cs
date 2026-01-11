@@ -1,6 +1,6 @@
 ﻿namespace LogViewer.Core.ViewModels;
 
-public class LogViewerControlViewModel : ViewModel, ILogDataStoreImpl
+public class LogViewerControlViewModel : ObservableObject, ILogDataStoreImpl
 {
     public LogViewerControlViewModel(ILogDataStore dataStore)
     {
